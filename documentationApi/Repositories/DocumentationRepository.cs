@@ -17,7 +17,7 @@ namespace documentationApi.Repositories
 
         public async Task<Documentation> AddAsync(Documentation doc)
         {
-            _context.Documentations.Add(doc);
+            await _context.Documentations.AddAsync(doc);
             await _context.SaveChangesAsync();
             return doc;
         }
