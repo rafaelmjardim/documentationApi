@@ -1,6 +1,7 @@
 using documentationApi.Data;
 using documentationApi.Endpoints;
 using documentationApi.Interfaces;
+using documentationApi.Repositories;
 using documentationApi.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDocumentationService, DocumentationService>();
+builder.Services.AddScoped<IDocumentationRepository, DocumentationRepository>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))

@@ -1,4 +1,5 @@
-﻿using documentationApi.Interfaces;
+﻿using documentationApi.Dto;
+using documentationApi.Interfaces;
 
 namespace documentationApi.Endpoints
 {
@@ -8,16 +9,9 @@ namespace documentationApi.Endpoints
         {
             var group = app.MapGroup("/api/documentations");
 
-            group.MapGet("/", async (IDocumentationService service) =>
-            {
+            group.MapPost("/", async (DocumentationDto doc, IDocumentationService service) => {
 
-                var result = await service.GetAllDocumentations();
-
-                return Results.Ok(result);
-            });
-
-            group.MapPost("/", () => {
-                return Results.Ok("Documentation post");
+                return await service.Create(doc);
             });
         }
     }

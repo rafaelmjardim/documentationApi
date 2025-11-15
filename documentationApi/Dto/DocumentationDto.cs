@@ -1,8 +1,7 @@
-﻿namespace documentationApi.Models
+﻿namespace documentationApi.Dto
 {
-    public class Documentation
+    public class DocumentationDto
     {
-        public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Patch { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
