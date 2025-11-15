@@ -15,10 +15,17 @@ namespace documentationApi.Services
         }
 
         public async Task<Documentation> Create(DocumentationDto doc) {
-            if (doc == null)
-            {
-                return null;
-            }
+            if (doc is null)
+                throw new ArgumentException(nameof(doc));
+            
+
+
+            if (string.IsNullOrWhiteSpace(doc.Title))
+                throw new ArgumentException("Título obrigatório.");
+
+            if (string.IsNullOrWhiteSpace(doc.Patch))
+                throw new ArgumentException("Patch obrigatório.");
+
 
             var newDoc = new Documentation
             {

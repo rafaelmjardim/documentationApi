@@ -11,7 +11,17 @@ namespace documentationApi.Endpoints
 
             group.MapPost("/", async (DocumentationDto doc, IDocumentationService service) => {
 
-                return await service.Create(doc);
+                try
+                {
+                    var created = await service.Create(doc);
+
+                    return Results.Ok(created);
+                } 
+                catch(ArgumentException ex) 
+                {
+                    return Results.BadRequest(ex.Message);
+                }
+
             });
         }
     }
