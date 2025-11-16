@@ -21,5 +21,20 @@ namespace documentationApi.Repositories
             await _context.SaveChangesAsync();
             return doc;
         }
+
+        public async Task<bool> Remove(int id)
+        {
+            var doc = await _context.Documentations.FindAsync(id);
+
+            if (doc is null)
+                return false;
+
+
+
+            _context.Documentations.Remove(doc);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

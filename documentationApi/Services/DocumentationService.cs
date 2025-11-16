@@ -38,5 +38,10 @@ namespace documentationApi.Services
 
             return newDoc;
         }
+
+        public async Task<bool> Delete(int id)
+        {
+            return await _repo.Remove(id);      
+        }
     }
 }

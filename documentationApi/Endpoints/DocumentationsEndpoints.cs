@@ -16,12 +16,22 @@ namespace documentationApi.Endpoints
                     var created = await service.Create(doc);
 
                     return Results.Ok(created);
-                } 
-                catch(ArgumentException ex) 
+                }
+                catch (ArgumentException ex)
                 {
                     return Results.BadRequest(ex.Message);
                 }
 
+            });
+
+            group.MapDelete("/{id}", async (int id, IDocumentationRepository service) =>
+            {
+                var deleted = await service.Remove(id);
+
+                if (!deleted)
+                    return Results.BadRequest("Nenhum item deletado.");
+
+               return Results.Ok("Deletado com sucesso.");
             });
         }
     }

@@ -6,5 +6,6 @@ namespace documentationApi.Interfaces
     public interface IDocumentationService
     {
         Task<Documentation> Create(DocumentationDto doc);
+        Task<bool> Delete(int id);
     }
 }
