@@ -15,6 +15,11 @@ namespace documentationApi.Repositories
             _context = context;
         }
 
+        public async Task<List<Documentation>> ListAsync()
+        {
+            return await _context.Documentations.AsNoTracking().ToListAsync();
+        }
+
         public async Task<Documentation> AddAsync(Documentation doc)
         {
             await _context.Documentations.AddAsync(doc);

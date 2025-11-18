@@ -9,6 +9,12 @@ namespace documentationApi.Endpoints
         {
             var group = app.MapGroup("/api/documentations");
 
+            group.MapGet("/", async (IDocumentationService service) => {
+                var docs = await service.GetAllDocumentations();
+
+                return Results.Ok(docs);
+            });
+
             group.MapPost("/", async (DocumentationDto doc, IDocumentationService service) => {
 
                 try
