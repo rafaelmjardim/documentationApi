@@ -64,7 +64,7 @@ namespace documentationApi.Services
 
             doc.Title = docDto.Title;
             doc.Patch = docDto.Patch;
-            doc.Content = doc.Content;
+            doc.Content = docDto.Content;
 
             await _repo.UpdateAsync(doc);
             return true;
