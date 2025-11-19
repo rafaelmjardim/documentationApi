@@ -19,6 +19,11 @@ namespace documentationApi.Services
             return await _repo.ListAsync();
         }
 
+        public async Task<Documentation?> GetById(int id)
+        {
+            return await _repo.FindAsync(id);
+        }
+
         public async Task<Documentation> Create(DocumentationDto doc) {
             if (doc is null)
                 throw new ArgumentException(nameof(doc));

@@ -15,6 +15,13 @@ namespace documentationApi.Endpoints
                 return Results.Ok(docs);
             });
 
+            group.MapGet("/{id}", async (int id, IDocumentationService service) =>
+            {
+                var doc = await service.GetById(id);
+
+                return doc is not null ? Results.Ok(doc) : Results.NotFound();
+            });
+
             group.MapPost("/", async (DocumentationDto doc, IDocumentationService service) => {
 
                 try

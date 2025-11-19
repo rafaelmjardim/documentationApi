@@ -1,6 +1,7 @@
 ﻿using documentationApi.Data;
 using documentationApi.Interfaces;
 using documentationApi.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace documentationApi.Repositories
@@ -18,6 +19,12 @@ namespace documentationApi.Repositories
         public async Task<List<Documentation>> ListAsync()
         {
             return await _context.Documentations.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<Documentation?> FindAsync(int id)
+        {
+            var doc = await _context.Documentations.FindAsync(id);
+            return doc;
         }
 
         public async Task<Documentation> AddAsync(Documentation doc)

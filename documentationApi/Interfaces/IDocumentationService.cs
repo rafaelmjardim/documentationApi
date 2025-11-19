@@ -6,6 +6,7 @@ namespace documentationApi.Interfaces
     public interface IDocumentationService
     {
         Task<List<Documentation>> GetAllDocumentations();
+        Task<Documentation?> GetById(int id);
         Task<Documentation> Create(DocumentationDto doc);
         Task<bool> Delete(int id);
     }
