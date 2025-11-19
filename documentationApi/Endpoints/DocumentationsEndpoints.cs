@@ -38,9 +38,9 @@ namespace documentationApi.Endpoints
 
             });
 
-            group.MapDelete("/{id}", async (int id, IDocumentationRepository service) =>
+            group.MapDelete("/{id}", async (int id, IDocumentationService service) =>
             {
-                var deleted = await service.Remove(id);
+                var deleted = await service.Delete(id);
 
                 if (!deleted)
                     return Results.BadRequest("Nenhum item deletado.");
