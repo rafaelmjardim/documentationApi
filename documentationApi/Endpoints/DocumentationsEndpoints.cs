@@ -1,5 +1,6 @@
 ﻿using documentationApi.Dto;
 using documentationApi.Interfaces;
+using documentationApi.Services;
 
 namespace documentationApi.Endpoints
 {
@@ -45,6 +46,12 @@ namespace documentationApi.Endpoints
                     return Results.BadRequest("Nenhum item deletado.");
 
                return Results.Ok("Deletado com sucesso.");
+            });
+
+            group.MapPut("/{id}", async (int id, DocumentationDto docDto, IDocumentationService service) =>
+            {
+                var isUpdated = await service.Update(id, docDto);
+                return isUpdated ? Results.Ok("Documento atualizado com sucesso.") : Results.NotFound("Erro ao editar.");
             });
         }
     }

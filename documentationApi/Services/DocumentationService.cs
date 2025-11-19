@@ -53,5 +53,21 @@ namespace documentationApi.Services
         {
             return await _repo.Remove(id);      
         }
+
+        public async Task<bool> Update(int id, DocumentationDto docDto)
+        {
+            var doc = await _repo.FindAsync(id);
+
+
+            if (doc is null)
+                return false;
+
+            doc.Title = docDto.Title;
+            doc.Patch = docDto.Patch;
+            doc.Content = doc.Content;
+
+            await _repo.UpdateAsync(doc);
+            return true;
+        }
     }
 }

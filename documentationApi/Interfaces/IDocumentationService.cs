@@ -9,5 +9,6 @@ namespace documentationApi.Interfaces
         Task<Documentation?> GetById(int id);
         Task<Documentation> Create(DocumentationDto doc);
         Task<bool> Delete(int id);
+        Task<bool> Update(int id, DocumentationDto updatedDoc);
     }
 }

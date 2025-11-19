@@ -48,5 +48,11 @@ namespace documentationApi.Repositories
 
             return true;
         }
+
+        public async Task UpdateAsync(Documentation doc)
+        {
+            _context.Documentations.Update(doc);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace documentationApi.Interfaces
         Task<Documentation?> FindAsync(int id);
         Task<Documentation> AddAsync(Documentation doc);
         Task<bool> Remove(int id);
+        Task UpdateAsync(Documentation doc);
     }
 }
