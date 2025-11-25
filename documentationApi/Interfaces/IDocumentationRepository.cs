@@ -7,7 +7,7 @@ namespace documentationApi.Interfaces
         Task<List<Documentation>> ListAsync();
         Task<Documentation?> FindAsync(int id);
         Task<Documentation> AddAsync(Documentation doc);
-        Task<bool> Remove(int id);
+        Task Remove(Documentation doc);
         Task UpdateAsync(Documentation doc);
     }
 }

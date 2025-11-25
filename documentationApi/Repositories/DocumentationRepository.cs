@@ -34,19 +34,10 @@ namespace documentationApi.Repositories
             return doc;
         }
 
-        public async Task<bool> Remove(int id)
+        public async Task Remove(Documentation doc)
         {
-            var doc = await _context.Documentations.FindAsync(id);
-
-            if (doc is null)
-                return false;
-
-
-
             _context.Documentations.Remove(doc);
             await _context.SaveChangesAsync();
-
-            return true;
         }
 
         public async Task UpdateAsync(Documentation doc)

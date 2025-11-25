@@ -51,7 +51,14 @@ namespace documentationApi.Services
 
         public async Task<bool> Delete(int id)
         {
-            return await _repo.Remove(id);      
+            var doc = await _repo.FindAsync(id);
+
+            if (doc is null) 
+                return false;
+
+
+               await _repo.Remove(doc);
+            return true;
         }
 
         public async Task<bool> Update(int id, DocumentationDto docDto)
